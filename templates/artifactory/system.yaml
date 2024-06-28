@@ -1,0 +1,12 @@
+configVersion: 1
+shared:
+  database:
+    allowNonPostgresql: false
+    type: postgresql
+    driver: org.postgresql.Driver
+    url: 'jdbc:postgresql://<hostName>:<port>/<databaseName>'
+    username: <userName>
+    password: <password>
+router:
+  entrypoints:
+    externalPort: <externalPort>
