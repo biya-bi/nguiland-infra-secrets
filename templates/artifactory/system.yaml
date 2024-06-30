@@ -9,4 +9,5 @@ shared:
     password: <password>
 router:
   entrypoints:
+    internalPort: <internalPort>
     externalPort: <externalPort>
