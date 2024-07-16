@@ -31,7 +31,7 @@ main() {
         local secret_name="artifactory-${system_name}"
         local env="$2"
         local system_yaml_file="$3"
-        local secret_yaml_file="${project_dir}/${env}/sops-age/${secret_name}-secret.yaml"
+        local secret_yaml_file="${project_dir}/${env}/sops-age/${secret_name}.yaml"
 
         create_secret "${secret_name}" "${system_yaml_file}" "${secret_yaml_file}"
 
