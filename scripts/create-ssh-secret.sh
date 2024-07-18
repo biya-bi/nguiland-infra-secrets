@@ -17,8 +17,6 @@ create_known_hosts_file() {
 }
 
 create_secret() {
-    local hosts="$1"
-
     local secret_name="$1"
     local secret_yaml_file="$2"
     local private_key_file="$3"
