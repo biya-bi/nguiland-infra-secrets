@@ -1,0 +1,30 @@
+apiVersion: v1
+data:
+    db: ENC[AES256_GCM,data:EIESLIxpfYNSwiGF,iv:8mwH4zo+mWD2E9BGp3FWsNvSKeJmpHV9P0h6fjNLRyw=,tag:M0fL6oTjuOMWKQuYeXlxfA==,type:str]
+    extra-dbs: ENC[AES256_GCM,data:h2/wLH72l4/+UlkGy5OozUrdZB/Tskn+9btABYv3FEJWhFgcUkNmXaXTC7wtdgLH3fUyLLammp8hUHF8y/FTbj6oLrLlSiQFY/BMBQ==,iv:v5u8oyiXdz+rryuDrOeDKOjOe7EbxzxjrvtYN+I9334=,tag:YRP4q5Xfv8kKcx7JfJyYSQ==,type:str]
+    password: ENC[AES256_GCM,data:mXYJeK0E/0pSEpUVKIbGoQ==,iv:Dj2EY4IOr/cmF38w9f9HZ8/jREaLYVjOs7BIU0JlRSk=,tag:nvNzCQ0IOZqWZUb7VrNEzg==,type:str]
+    user: ENC[AES256_GCM,data:hP2tCaoyhUSxI7e/,iv:88UfCG+lfUfc62IvOmU+vZ7LUnk68c77r7r5WLv741c=,tag:PkberwKQHMRoh5VLReIzaA==,type:str]
+kind: Secret
+metadata:
+    name: postgres
+    namespace: infra
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age17p0tpa9akvns84dy28jaujch4z3qrzltr6x9s7l5frdussrdnqqszcv9hc
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB3emRrKzZYMjJCay8rTHpv
+            Q3cxdzUxREI3aFA4d0JjZnJSZEp3bnlRTlJjCmRFUzAxemNxS0JjblhyUWFvbm5s
+            eWFpeTNDUW51SjNXWDg1RXZ1c2tWRzAKLS0tIHh0TncrNFd5UVJ1QkxURkFGRC9r
+            b0Z6TFd5VzhUVG9XdXl5eS9QeGNTMzQK3oIK8tadIK1xuccb3Yj0KVEdBjBWsO/P
+            jRH3vcpBjOzNb6DPY6MDdYMxv/ERTVrMQTqrdk1EF8HGG47zZnAPsQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-08-01T14:06:29Z"
+    mac: ENC[AES256_GCM,data:4xEFNi3u82GaIJNzch39zI91U1J0A1Ul6Z/8dmSlQ4OAHxG2nkIuj1iaIGIAjndf6nm9VYh4iSYR+ybjqFp5sOxVC7fSDUvZDOJ3Nmc6Icul2YBUqTgWLSd/kQbOy0EYbQ1nrxq3qH3OI5pVXcoDSE5sVozhF9ozyjOI7YXkdJ0=,iv:14ZvsYeDJByr8Y3pHRbOkvvOQiCHd6AwCLNc5UnUAWA=,tag:Y9k9p4P1O9mhq2xmMIQiBA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.0
