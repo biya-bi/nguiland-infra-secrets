@@ -1,0 +1,29 @@
+apiVersion: v1
+data:
+    .dockerconfigjson: ENC[AES256_GCM,data:GmPg8njs5dP7QXyl5khbtlCN6joLvI4FZv69KFQI3PBTy8CPgjmWiweo9omEGyKqJnsArf3bc0p/IicdWGo1pCyrBSVnXVH5tMzlC0BdYxwTI+RS+LiHUDI18OSHKzxcCtvqZJGiDkc4lKTtFBo1Ns1/GMn4mAoUt35fjThMo/RoAzrP6Hn/FOO9FuC3m7CjzglE8+zI/wn6rf2KUABvUls173DTrK7cUQ3s1BuLXRfvbgZcKs6EQwpsx0bz/KgWe+259qN3YPN3vLQxev7k85AKz9r3VKZesW5qmYbAdWq82EwAodYgul1b5htMvyREycGtMZxbeZQW/JiZbmYFLWH1d6KqYEyKM83NkR5MljZaSXFxCNxnZhrwZrZShNvs6ZpM0CBVd1kRsYFkfufmiXA16UV14Z0GRZUGqIeW+9tTLgNUfsIfrHvW74BdWpUGBV1wn0zoSKgZRj190QCQKxieYE9e5ieZ,iv:u7+PyP5Rok4hmssCyXOX/vUAbHwa7BQMfLOl3y6IcpM=,tag:foo5dG0593BNiK0fFxxwEA==,type:str]
+    config.json: ENC[AES256_GCM,data:DcZmS6BdSIeDf7Xv9zisc43iuzgZYdvV/cfY1PTjPMkCfrdJLXv/z7onIh9UkzKIVkHmXAiOC7/SzomT8osi4Yx4hNLR18s2ypC1lW0gc5glYOkbbGoxMzFow66G1P2N9teyXr6Isne/bQy+4fD5GUU3G+55MBmRSOLVmTXj0SxrroNBBZGOlptQHRRpRDSX3Zq7t6ZQVPO+WP4Zfri4EmI2nZABRb6Z45Bb5QWQXwZnp1OPdjy52LHhj0is7/33gN/j+96RjHFGq2ti76xRDwbuEHoBhiFtFkjDzOSMu1oWvbnHUILuhWBEcYy+rzQce7SQCt7CCKGuhvX91RzPj141k7KWxVP8RWCdgAM6qyMdgNrcwd4a/aZy36pWaOyWh++8qlL5WiZFlfuiXc+ijYec5hG9m8pRENsKdT3eOdqB2YuXA8Oj6f+heZFw+CIg0v2pM769Q8lDa/E1pMmg+m0XTnlrj6ug,iv:R84FxNnzlCZB69pbeug+RArmyKkqIeJJ3oUvUwL+gwk=,tag:ZT9JuiqfXERAQbYs1IHVbw==,type:str]
+kind: Secret
+metadata:
+    name: docker-config
+    namespace: infra
+type: kubernetes.io/dockerconfigjson
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1mqtfy7qnvac57dm6dp3k6w3cf2m367gx502d6nl8fykv847u0gnssgkcpy
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBXd3NwZE9tdTlmcjJTNStt
+            UWVuUEpxREd2N1djK0s3alVhajJuRlc4aWpjClpkTi9vczVrL213V3pxK0VCMzdo
+            ZjdtbnhENUNmQzhod09vcVRMOWJBbW8KLS0tIDVvOFd3Vm1BQ1BGZWtPd09Lc014
+            dnVaM2VpQlJ6OVZSV3piMGd2c1BtZ2sKhUhb01hZXES80TJuxDDslKS72xMkd+FL
+            8vcae8gNU/fuSLtV2U4pobtmZSlTaDtJj/T7ofe+DFFbv0x/I1iAZw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-09-07T17:15:48Z"
+    mac: ENC[AES256_GCM,data:49HTnVRrQNmY3I9mk3tQu8oorkxPmYPQZDJcDxVRdhnH1MLhepTlFhoOElb9/hsdcqvXXKSmvhHL4TZa9iEOeWEIETycdmYkEp10WcvaOCXNkK4KkDe5a+fptTbOF8eb12WOIhd8UQOQOb0cSsSGBrtJ4Y5HRTQjTnC3yLjT5xI=,iv:Jny5av2ICl/HM2Hpcwzdm8snNCADR/UEbcffdKi5bcY=,tag:/jnfyA85lWH6pQQj/zBxOA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.0
