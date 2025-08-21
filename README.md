@@ -6,3 +6,13 @@ Artifactory secrets can be created using a command similar to the below:
 ```
 scripts/create-artifactory-system-secret.sh <env> <system_name>
 ```
+
+Postgres secrets can be created using a command similar to the below:
+```
+scripts/create-postgres-secret.sh <env>
+```
+
+Keycloak secrets can be created using a command similar to the below:
+```
+scripts/create-keycloak-secret.sh <env>
+```

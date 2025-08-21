@@ -21,6 +21,17 @@ set_connection_string() {
     yq -i '(.shared.database.url = "'"${url}"'") | (.shared.database.username = "'"${username}"'") | (.shared.database.password = "'"${password}"'")' "${system_yaml}"
 }
 
+get_admin_credentials() {
+    local env="$1"
+
+    local credentials_dir="${NGUILAND_ARTIFACTORY_ADMIN_CREDENTIALS_DIR}/${env}"
+
+    local username=$(cat "${credentials_dir}/user")
+    local password=$(cat "${credentials_dir}/password")
+
+    printf "${username}=${password}"
+}
+
 create_secret() {
     local env="$1"
     local system_yaml="$2"
@@ -29,10 +40,13 @@ create_secret() {
     local secret_name="artifactory-${system_name}"
     local secret_yaml="${project_dir}/${env}/sops-age/${secret_name}.yaml"
 
+    local admin_credentials=$(get_admin_credentials "${system_name}")
+
     kubectl create secret generic "${secret_name}" \
         --from-literal=join.key="${ARTIFACTORY_JOIN_KEY}" \
         --from-literal=master.key="${ARTIFACTORY_MASTER_KEY}" \
         --from-file=system.yaml="${system_yaml}" \
+        --from-literal=bootstrap.creds="${admin_credentials}" \
         -o yaml \
         --namespace="${namespace}" \
         --dry-run=client \
@@ -77,3 +91,4 @@ main() {
 }
 
 main "$@"
+
