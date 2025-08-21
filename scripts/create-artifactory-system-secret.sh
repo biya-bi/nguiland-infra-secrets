@@ -4,39 +4,76 @@ set -eu
 
 script_dir=`realpath "$(dirname $0)"`
 project_dir=`realpath "${script_dir}/.."`
+system_yaml_template=`realpath "${script_dir}/../templates/artifactory/system.yaml"`
 
 namespace="infra"
 
+set_connection_string() {
+    local env="$1"
+    local system_yaml="$2"
+
+    local connection_string_dir="${NGUILAND_DATABASE_CONNECTION_STRING_DIR}"
+
+    local url=$(cat "${connection_string_dir}/url")
+    local username=$(cat "${connection_string_dir}/user")
+    local password=$(cat "${connection_string_dir}/password")
+
+    yq -i '(.shared.database.url = "'"${url}"'") | (.shared.database.username = "'"${username}"'") | (.shared.database.password = "'"${password}"'")' "${system_yaml}"
+}
+
 create_secret() {
-    local secret_name="$1"
-    local system_yaml_file="$2"
-    local secret_yaml_file="$3"
+    local env="$1"
+    local system_yaml="$2"
+    local system_name="$3"
+
+    local secret_name="artifactory-${system_name}"
+    local secret_yaml="${project_dir}/${env}/sops-age/${secret_name}.yaml"
 
     kubectl create secret generic "${secret_name}" \
         --from-literal=join.key="${ARTIFACTORY_JOIN_KEY}" \
         --from-literal=master.key="${ARTIFACTORY_MASTER_KEY}" \
-        --from-file=system.yaml="${system_yaml_file}" \
+        --from-file=system.yaml="${system_yaml}" \
         -o yaml \
         --namespace="${namespace}" \
         --dry-run=client \
-        | grep -v "\s*creationTimestamp:\s*null" > "${secret_yaml_file}"
+        | grep -v "\s*creationTimestamp:\s*null" > "${secret_yaml}"
+
+    cd "${project_dir}"
+
+    sops -e -i "${env}/sops-age/artifactory-${system_name}.yaml"
+
+    printf "The %s secret was created in the %s file" "${secret_name}" "${secret_yaml}"
+}
+
+get_temp_system_yaml() {
+    local system_yaml=$(mktemp)
+    cp "${system_yaml_template}" "${system_yaml}"
+    printf "${system_yaml}"
 }
 
 main() {
-    local system_name=`echo "$1" | tr '[:upper:]' '[:lower:]'`
+    local expected_arg_count=2
+
+    if [ "$#" -lt "${expected_arg_count}" ]; then
+        printf "Error: Not enough arguments provided.\n"
+        printf "Usage: $0 <env> <system_name>\n"
+        exit 1
+    fi
+
+    local system_name=`echo "$2" | tr '[:upper:]' '[:lower:]'`
+
     if [ "${system_name}" != "oss" ] && [ "${system_name}" != "jcr" ]; then
         printf "%s is an invalid system name! Valid system names are [%s, %s]\n" "${system_name}" "oss" "jcr"
         exit 1
-    else
-        local secret_name="artifactory-${system_name}"
-        local env="$2"
-        local system_yaml_file="$3"
-        local secret_yaml_file="${project_dir}/${env}/sops-age/${secret_name}.yaml"
-
-        create_secret "${secret_name}" "${system_yaml_file}" "${secret_yaml_file}"
-
-        printf "The %s secret was created in the %s file" "${secret_name}" "${secret_yaml_file}"
     fi
+
+    local env="$1"
+    local system_yaml=$(get_temp_system_yaml)
+
+    set_connection_string "${env}" "${system_yaml}"
+    create_secret "${env}" "${system_yaml}" "${system_name}"
+
+    rm "${system_yaml}"
 }
 
 main "$@"

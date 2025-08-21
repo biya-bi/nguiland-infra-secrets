@@ -4,10 +4,10 @@ shared:
     allowNonPostgresql: false
     type: postgresql
     driver: org.postgresql.Driver
-    url: 'jdbc:postgresql://<hostName>:<port>/<databaseName>'
+    url: jdbc:postgresql://<hostName>:<port>/<databaseName>
     username: <userName>
     password: <password>
-router:
-  entrypoints:
-    internalPort: <internalPort>
-    externalPort: <externalPort>
+artifactory:
+  tomcat:
+    connector:
+      extraConfig: 'connectionTimeout="600000"'
