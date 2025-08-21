@@ -4,7 +4,7 @@ This is a Secret as Code project. Its purpose is to manage secrets in a simple b
 
 Artifactory secrets can be created using a command similar to the below:
 ```
-scripts/create-artifactory-system-secret.sh <env> <system_name>
+scripts/create-artifactory-secret.sh <env> <system_name>
 ```
 
 Postgres secrets can be created using a command similar to the below:
