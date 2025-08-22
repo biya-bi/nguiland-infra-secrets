@@ -35,7 +35,11 @@ get_admin_credentials() {
 
     local credentials_dir="${NGUILAND_ARTIFACTORY_CONFIG_DIR}/${system_name}/admin"
 
-    local username=$(cat "${credentials_dir}/user")
+    # The bootstrap_user file contains the username followed by @, which in turn could be followed by an IP, instance name or *.
+    # The user file on the other hand contains just the username as can be typed by a user.
+    # To set the admin credentials in the secret, we will need the content of the bootstrap_user file rather than that of the user file.
+    # The user file will be necessary for other types of credentials such as those required in Maven settings and Docker configurations.
+    local username=$(cat "${credentials_dir}/bootstrap_user")
     local password=$(cat "${credentials_dir}/password")
 
     printf "${username}=${password}"
