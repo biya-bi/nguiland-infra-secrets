@@ -16,3 +16,8 @@ Keycloak secrets can be created using a command similar to the below:
 ```
 scripts/create-keycloak-secret.sh <env>
 ```
+
+Maven secrets can be created using a command similar to the below:
+```
+scripts/create-maven-settings-secret.sh <env>
+```
