@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
-    .dockerconfigjson: ENC[AES256_GCM,data:GmPg8njs5dP7QXyl5khbtlCN6joLvI4FZv69KFQI3PBTy8CPgjmWiweo9omEGyKqJnsArf3bc0p/IicdWGo1pCyrBSVnXVH5tMzlC0BdYxwTI+RS+LiHUDI18OSHKzxcCtvqZJGiDkc4lKTtFBo1Ns1/GMn4mAoUt35fjThMo/RoAzrP6Hn/FOO9FuC3m7CjzglE8+zI/wn6rf2KUABvUls173DTrK7cUQ3s1BuLXRfvbgZcKs6EQwpsx0bz/KgWe+259qN3YPN3vLQxev7k85AKz9r3VKZesW5qmYbAdWq82EwAodYgul1b5htMvyREycGtMZxbeZQW/JiZbmYFLWH1d6KqYEyKM83NkR5MljZaSXFxCNxnZhrwZrZShNvs6ZpM0CBVd1kRsYFkfufmiXA16UV14Z0GRZUGqIeW+9tTLgNUfsIfrHvW74BdWpUGBV1wn0zoSKgZRj190QCQKxieYE9e5ieZ,iv:u7+PyP5Rok4hmssCyXOX/vUAbHwa7BQMfLOl3y6IcpM=,tag:foo5dG0593BNiK0fFxxwEA==,type:str]
-    config.json: ENC[AES256_GCM,data:DcZmS6BdSIeDf7Xv9zisc43iuzgZYdvV/cfY1PTjPMkCfrdJLXv/z7onIh9UkzKIVkHmXAiOC7/SzomT8osi4Yx4hNLR18s2ypC1lW0gc5glYOkbbGoxMzFow66G1P2N9teyXr6Isne/bQy+4fD5GUU3G+55MBmRSOLVmTXj0SxrroNBBZGOlptQHRRpRDSX3Zq7t6ZQVPO+WP4Zfri4EmI2nZABRb6Z45Bb5QWQXwZnp1OPdjy52LHhj0is7/33gN/j+96RjHFGq2ti76xRDwbuEHoBhiFtFkjDzOSMu1oWvbnHUILuhWBEcYy+rzQce7SQCt7CCKGuhvX91RzPj141k7KWxVP8RWCdgAM6qyMdgNrcwd4a/aZy36pWaOyWh++8qlL5WiZFlfuiXc+ijYec5hG9m8pRENsKdT3eOdqB2YuXA8Oj6f+heZFw+CIg0v2pM769Q8lDa/E1pMmg+m0XTnlrj6ug,iv:R84FxNnzlCZB69pbeug+RArmyKkqIeJJ3oUvUwL+gwk=,tag:ZT9JuiqfXERAQbYs1IHVbw==,type:str]
+    .dockerconfigjson: ENC[AES256_GCM,data:6NFSvPEUBAuaFNC9z+D8PDn5I2UOedotMzyHsz+nJPdCK3hzTe4ttTJVMRnMVL3SzviEFggaI+K3H9mnqj9bjulv6CMsyV9Mr49nDkurpsxORzfRKXPz0jARhfeKfGlQ8xiOFWSjEYEwSk5P7HRY8MlhlIZDGn1qXGoTlkI92nsDC2iKOPvpHzu9TWLULo7MiR357XckyFL1TcRNonl2teEE6iGxe3EpcvY2mmFygEdsJ6oawPMPYEfCq1gHteeVE4Q/+zk55Vw1tYnwb5pbquUPaB9EJJd9UZw176AD/6HbyImI6YRDDSt0U6GOhCi/rBq3l/x9xoPGRlAaeV2IY5u+vB45X86w6GyUD6nASHbhL88i/fAKV3fsDELkWpldPRAIatC7XBSqLfeXp/eUQneq7LqLVyizpsUlK2WnAgIov/BpU8CpfxIHSFW7aFjwez7AyONLE660mryRcOXuELSm2mwlUcP8ihj1Cc7tiAg1F0V7Hzmo5dGGIxsWOEtsi6P+/GDCD6ArrSF72QP1kn7HTNvFlluAV86M+VPpJSJC62Af63hVa+ptdapDequ6C+gvxfmKZZC/k1kVMuglnO+E3K4=,iv:BaUltqsAH3zpx1lAzZfuGkPYE4PUHjsO2WXshPSpbGw=,tag:6/hVpbKCCswbxcPqRa5e8g==,type:str]
+    config.json: ENC[AES256_GCM,data:G9Qd76NGomnkY5MeqY9tIJSkFY4jGgnkr48XThydDOwcaRKYxSFS+yPFglDDsGldvtrn6IWNfMneC1+LxoBmqG0Z4R/RBUVVE6Ky2U0c+6QscMfMWVkPmx/qaN9ORhpTYx2goNXCMiO115KbRazoWMZC5DlZ4NHwwHBSDAblv8omRVo06z6uq0bALfAxRZCiBbOctFOJTBV8fLg2kOze4jy2GSGq1hmnRoTdK0zR3AnSeDTSE57r13mfP2+SBolunjaXhTZJGSPgPcPWq4xICJdV3rEmmNzpPavVMRaZ1gEZ5a34X49jqjVz1+Lu2rGYsEoks+TqJsDUeN6IwwbxGvqbrqU9PlK9utm4x/L+/wtCwv8ZUtAa8mN1lXOA89hlhN1DKY4Ej8rA5589q0mCbknOnOlPCfwYTqBOcDYyauGekGQCZ4Y/TEnlGFwJsdlBih7wULfoY4lU6SEvHR9aPiAFF7qWyBkdxMFriWX7tL8IFiAC265cxP2whNEarAsu9jLQe5CAvv2TSU6YaHL3xAIlHfjOCW4cUOS7S2xzRWGSAuZOK9/uYwT0nv0YQ8fRuHPgoi89ZSfohpCHKzKrdezkuZg=,iv:cbHiI2ecWJD4F4XV0Oqc6g+glzM9qmeUBYtVKOZT/n8=,tag:5yijhnE3IU809hu13n3o3w==,type:str]
 kind: Secret
 metadata:
     name: docker-config
@@ -16,14 +16,14 @@ sops:
         - recipient: age1mqtfy7qnvac57dm6dp3k6w3cf2m367gx502d6nl8fykv847u0gnssgkcpy
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBXd3NwZE9tdTlmcjJTNStt
-            UWVuUEpxREd2N1djK0s3alVhajJuRlc4aWpjClpkTi9vczVrL213V3pxK0VCMzdo
-            ZjdtbnhENUNmQzhod09vcVRMOWJBbW8KLS0tIDVvOFd3Vm1BQ1BGZWtPd09Lc014
-            dnVaM2VpQlJ6OVZSV3piMGd2c1BtZ2sKhUhb01hZXES80TJuxDDslKS72xMkd+FL
-            8vcae8gNU/fuSLtV2U4pobtmZSlTaDtJj/T7ofe+DFFbv0x/I1iAZw==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBrSW82SHg0YS8yUG5MK0Ev
+            cy9QUENrbXVSRW9uVEppNzI4cHJhd2dNbDBrClpWQTVnQlVWOGVpdVdka3l5SGNo
+            NFVrTE54Sk9ydXJjWHMxR1plUTdnb3MKLS0tIHArWDc3OThTOU1yd2o5UmJneXpZ
+            OG1PYXpmZXdVVE9mTWJEeUZURllSc0EK5qVdVBcKomnJq/efGmikPcQSfHRw+XTY
+            g7TeoCE1NyOS1ltnuuUCQewL6UNEEJCojx40NspfhmbCJexqezw3qg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-09-07T17:15:48Z"
-    mac: ENC[AES256_GCM,data:49HTnVRrQNmY3I9mk3tQu8oorkxPmYPQZDJcDxVRdhnH1MLhepTlFhoOElb9/hsdcqvXXKSmvhHL4TZa9iEOeWEIETycdmYkEp10WcvaOCXNkK4KkDe5a+fptTbOF8eb12WOIhd8UQOQOb0cSsSGBrtJ4Y5HRTQjTnC3yLjT5xI=,iv:Jny5av2ICl/HM2Hpcwzdm8snNCADR/UEbcffdKi5bcY=,tag:/jnfyA85lWH6pQQj/zBxOA==,type:str]
+    lastmodified: "2025-08-22T23:45:52Z"
+    mac: ENC[AES256_GCM,data:b0PB+XE+5kagK3totrna1rOhjWyPXnm9+lXnIN8KkDqrnmt/wUzHmFg4y5F/DHOUkQwcxgYMsXG+4N3dSSz1Aw4Aawg5e6Fin2nAx1dPRzR/BhjWiHtXtY7LVAMDpd6EnfwG8oe1QyJMorkb1XCi1GGrb9SvGWcLTyHXKyh4JS4=,iv:nuN7Axczg4wTXdeuvmu+yfKEsRrrH1FgbKd3cZGJPco=,tag:TticOGPHbgaO6xyLaVnVxw==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.9.0
