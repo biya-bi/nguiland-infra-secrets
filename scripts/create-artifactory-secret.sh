@@ -11,8 +11,9 @@ namespace="infra"
 set_connection_string() {
     local env="$1"
     local system_yaml="$2"
+    local system_name="$3"
 
-    local connection_string_dir="${NGUILAND_DATABASE_CONNECTION_STRING_DIR}"
+    local connection_string_dir="${NGUILAND_ARTIFACTORY_CONFIG_DIR}/${system_name}/database"
 
     local url=$(cat "${connection_string_dir}/url")
     local username=$(cat "${connection_string_dir}/user")
@@ -95,7 +96,7 @@ main() {
     local env="$1"
     local system_yaml=$(get_temp_system_yaml)
 
-    set_connection_string "${env}" "${system_yaml}"
+    set_connection_string "${env}" "${system_yaml}" "${system_name}"
     create_secret "${env}" "${system_yaml}" "${system_name}"
 
     rm "${system_yaml}"
