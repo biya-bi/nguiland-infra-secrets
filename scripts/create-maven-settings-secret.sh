@@ -10,25 +10,25 @@ namespace="infra"
 
 secret_name="maven-settings"
 
-get_credential_path() {
+get_credential_xpath() {
 	local credential_name="$1"
 	printf "//*[local-name()='settings']/*[local-name()='servers']/*[local-name()='server']/*[local-name()='${credential_name}']"
 }
 
 set_credentials() {
     local env="$1"
-	local input_path="$2"
-	local output_path="$3"
+	local input_xml="$2"
+	local output_xml="$3"
 
-    local credentials_dir="${NGUILAND_ARTIFACTORY_CONFIG_DIR}/oss/admin"
+    local credentials_dir="${NGUILAND_ARTIFACTORY_CONFIG_DIR}/oss/console"
 
     local username=$(cat "${credentials_dir}/user")
     local password=$(cat "${credentials_dir}/password")
 
-	local username_path=$(get_credential_path "username")
-	local password_path=$(get_credential_path "password")
+	local username_xpath=$(get_credential_xpath "username")
+	local password_xpath=$(get_credential_xpath "password")
 
-	xmlstarlet ed -u "${username_path}" -v "${username}" -u "${password_path}" -v "${password}" "${input_path}" > "${output_path}"
+	xmlstarlet ed -u "${username_xpath}" -v "${username}" -u "${password_xpath}" -v "${password}" "${input_xml}" > "${output_xml}"
 }
 
 create_secret() {

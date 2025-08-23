@@ -33,7 +33,7 @@ get_key() {
 get_admin_credentials() {
     local system_name="$1"
 
-    local credentials_dir="${NGUILAND_ARTIFACTORY_CONFIG_DIR}/${system_name}/admin"
+    local credentials_dir="${NGUILAND_ARTIFACTORY_CONFIG_DIR}/${system_name}/console"
 
     # The bootstrap_user file contains the username followed by @, which in turn could be followed by an IP, instance name or *.
     # The user file on the other hand contains just the username as can be typed by a user.
