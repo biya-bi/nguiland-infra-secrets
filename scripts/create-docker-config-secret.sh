@@ -13,10 +13,12 @@ secret_name="docker-config"
 get_credentials() {
     local env="$1"
 
-    local credentials_dir="${NGUILAND_ARTIFACTORY_CONFIG_DIR}/jcr/console"
+    local config_dir="${NGUILAND_CONFIG_DIR}/${env}/artifactory"
 
-    local username=$(cat "${credentials_dir}/user")
-    local password=$(cat "${credentials_dir}/password")
+    local console_dir="${config_dir}/jcr/console"
+
+    local username=$(cat "${console_dir}/user")
+    local password=$(cat "${console_dir}/password")
 
     printf "${username}:${password}"
 }

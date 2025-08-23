@@ -13,11 +13,13 @@ create_secret() {
     local env="$1"
 
     local secret_yaml="${project_dir}/${env}/sops-age/${secret_name}.yaml"
-    local credentials_dir="${NGUILAND_DATABASE_CONNECTION_STRING_DIR}"
-    local user=$(cat "${credentials_dir}/user")
-    local password=$(cat "${credentials_dir}/password")
-    local database=$(cat "${credentials_dir}/database")
-    local extra_databases=$(cat "${credentials_dir}/extra_databases")
+
+    local postgres_dir="${NGUILAND_CONFIG_DIR}/${env}/postgres"
+
+    local user=$(cat "${postgres_dir}/user")
+    local password=$(cat "${postgres_dir}/password")
+    local database=$(cat "${postgres_dir}/database")
+    local extra_databases=$(cat "${postgres_dir}/extra_databases")
 
     kubectl create secret generic "${secret_name}" \
         --from-literal=user="${user}" \

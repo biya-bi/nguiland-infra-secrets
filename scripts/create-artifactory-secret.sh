@@ -13,7 +13,9 @@ set_connection_string() {
     local system_yaml="$2"
     local system_name="$3"
 
-    local connection_string_dir="${NGUILAND_ARTIFACTORY_CONFIG_DIR}/${system_name}/database"
+    local config_dir="${NGUILAND_CONFIG_DIR}/${env}/artifactory"
+
+    local connection_string_dir="${config_dir}/${system_name}/database"
 
     local url=$(cat "${connection_string_dir}/url")
     local username=$(cat "${connection_string_dir}/user")
@@ -25,7 +27,9 @@ set_connection_string() {
 get_key() {
     local key_type="$1"
 
-    local keys_dir="${NGUILAND_ARTIFACTORY_CONFIG_DIR}/keys"
+    local config_dir="${NGUILAND_CONFIG_DIR}/${env}/artifactory"
+
+    local keys_dir="${config_dir}/keys"
 
     printf "$(cat ${keys_dir}/${key_type}.key)"
 }
@@ -33,14 +37,16 @@ get_key() {
 get_admin_credentials() {
     local system_name="$1"
 
-    local credentials_dir="${NGUILAND_ARTIFACTORY_CONFIG_DIR}/${system_name}/console"
+    local config_dir="${NGUILAND_CONFIG_DIR}/${env}/artifactory"
+
+    local console_dir="${config_dir}/${system_name}/console"
 
     # The bootstrap_user file contains the username followed by @, which in turn could be followed by an IP, instance name or *.
     # The user file on the other hand contains just the username as can be typed by a user.
     # To set the admin credentials in the secret, we will need the content of the bootstrap_user file rather than that of the user file.
     # The user file will be necessary for other types of credentials such as those required in Maven settings and Docker configurations.
-    local username=$(cat "${credentials_dir}/bootstrap_user")
-    local password=$(cat "${credentials_dir}/password")
+    local username=$(cat "${console_dir}/bootstrap_user")
+    local password=$(cat "${console_dir}/password")
 
     printf "${username}=${password}"
 }

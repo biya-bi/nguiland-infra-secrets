@@ -10,8 +10,12 @@ namespace="infra"
 secret_name="keycloak"
 
 create_secret() {
+    local env="$1"
+
     local secret_yaml="${project_dir}/${env}/sops-age/${secret_name}.yaml"
-    local config_dir="${NGUILAND_KEYCLOAK_CONFIG_DIR}"
+
+    local config_dir="${NGUILAND_CONFIG_DIR}/${env}/keycloak"
+
     local database_dir="${config_dir}/database"
     local db_user=$(cat "${database_dir}/user")
     local db_password=$(cat "${database_dir}/password")

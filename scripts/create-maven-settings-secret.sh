@@ -20,10 +20,12 @@ set_credentials() {
 	local input_xml="$2"
 	local output_xml="$3"
 
-    local credentials_dir="${NGUILAND_ARTIFACTORY_CONFIG_DIR}/oss/console"
+    local config_dir="${NGUILAND_CONFIG_DIR}/${env}/artifactory"
 
-    local username=$(cat "${credentials_dir}/user")
-    local password=$(cat "${credentials_dir}/password")
+    local console_dir="${config_dir}/oss/console"
+
+    local username=$(cat "${console_dir}/user")
+    local password=$(cat "${console_dir}/password")
 
 	local username_xpath=$(get_credential_xpath "username")
 	local password_xpath=$(get_credential_xpath "password")
