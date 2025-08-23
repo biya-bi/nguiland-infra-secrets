@@ -11,14 +11,15 @@ secret_name="keycloak"
 
 create_secret() {
     local secret_yaml="${project_dir}/${env}/sops-age/${secret_name}.yaml"
-    local postgres_credentials_dir="${NGUILAND_DATABASE_CONNECTION_STRING_DIR}"
-    local db_user=$(cat "${postgres_credentials_dir}/user")
-    local db_password=$(cat "${postgres_credentials_dir}/password")
-    local db_url=$(cat "${postgres_credentials_dir}/url")
+    local config_dir="${NGUILAND_KEYCLOAK_CONFIG_DIR}"
+    local database_dir="${config_dir}/database"
+    local db_user=$(cat "${database_dir}/user")
+    local db_password=$(cat "${database_dir}/password")
+    local db_url=$(cat "${database_dir}/url")
 
-    local keycloak_credentials_dir="${NGUILAND_KEYCLOAK_CREDENTIALS_DIR}"
-    local console_user=$(cat "${keycloak_credentials_dir}/user")
-    local console_password=$(cat "${keycloak_credentials_dir}/password")
+    local console_dir="${config_dir}/console"
+    local console_user=$(cat "${console_dir}/user")
+    local console_password=$(cat "${console_dir}/password")
 
     kubectl create secret generic "${secret_name}" \
         --from-literal=db-user="${db_user}" \
