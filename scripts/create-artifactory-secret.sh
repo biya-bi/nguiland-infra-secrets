@@ -34,21 +34,51 @@ get_key() {
     printf "$(cat ${keys_dir}/${key_type}.key)"
 }
 
-get_bootstrap_credentials() {
-    local system_name="$1"
+# Get an authentication field for a given system.
+# The bootstrap_user file contains the username followed by @, which could be followed by an IP, instance name or *.
+# The user file on the other hand contains just the username as can be typed by a user.
+# To set the admin credentials in the secret, we will need the content of the bootstrap_user file rather than that of the user file.
+# The user file will be necessary for other types of credentials such as those required in Maven settings and Docker configurations.
+#
+# Parameters:
+#   $1 - system name
+#   $2 - field name ("user", "password", or "bootstrap_user")
+#
+# Returns:
+#   Prints the value of the requested field to stdout.
+#
+# Errors:
+#   Returns non-zero if the field is invalid or the file does not exist.
+get_authentication_field() {
+    local system_name="${1:?missing system_name}"
+    local field_type="${2:?missing field_type}"
+
+    # --- Validate field name ---
+    case "$field_type" in
+        user|password|bootstrap_user)
+            ;;
+        *)
+            echo "Error: field_type must be 'user', 'password', or 'bootstrap_user'" >&2
+            return 1
+            ;;
+    esac
 
     local config_dir="${NGUILAND_CONFIG_DIR}/${env}/artifactory"
-
     local console_dir="${config_dir}/${system_name}/console"
+    local file_path="${console_dir}/${field_type}"
 
-    # The bootstrap_user file contains the username followed by @, which in turn could be followed by an IP, instance name or *.
-    # The user file on the other hand contains just the username as can be typed by a user.
-    # To set the admin credentials in the secret, we will need the content of the bootstrap_user file rather than that of the user file.
-    # The user file will be necessary for other types of credentials such as those required in Maven settings and Docker configurations.
-    local username=$(cat "${console_dir}/bootstrap_user")
-    local password=$(cat "${console_dir}/password")
+    # --- Check file exists ---
+    if [[ ! -f "$file_path" ]]; then
+        echo "Error: file not found: $file_path" >&2
+        return 1
+    fi
 
-    printf "${username}=${password}"
+    # --- Read file safely ---
+    local authentication_field
+    authentication_field=$(<"$file_path")
+
+    # --- Safe output ---
+    printf '%s' "$authentication_field"
 }
 
 create_secret() {
@@ -62,13 +92,18 @@ create_secret() {
     local join_key=$(get_key "join")
     local master_key=$(get_key "master")
 
-    local bootstrap_credentials=$(get_bootstrap_credentials "${system_name}")
+    local user=$(get_authentication_field "${system_name}" "user")
+    local password=$(get_authentication_field "${system_name}" "password")
+    local bootstrap_user=$(get_authentication_field "${system_name}" "bootstrap_user")
+    local bootstrap_credentials="${bootstrap_user}=${password}"
 
     kubectl create secret generic "${secret_name}" \
         --from-literal=join.key="${join_key}" \
         --from-literal=master.key="${master_key}" \
         --from-file=system.yaml="${system_yaml}" \
         --from-literal=bootstrap.creds="${bootstrap_credentials}" \
+        --from-literal=user="${user}" \
+        --from-literal=password="${password}" \
         -o yaml \
         --namespace="${namespace}" \
         --dry-run=client \
