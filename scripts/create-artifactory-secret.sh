@@ -34,7 +34,7 @@ get_key() {
     printf "$(cat ${keys_dir}/${key_type}.key)"
 }
 
-get_admin_credentials() {
+get_bootstrap_credentials() {
     local system_name="$1"
 
     local config_dir="${NGUILAND_CONFIG_DIR}/${env}/artifactory"
@@ -62,13 +62,13 @@ create_secret() {
     local join_key=$(get_key "join")
     local master_key=$(get_key "master")
 
-    local admin_credentials=$(get_admin_credentials "${system_name}")
+    local bootstrap_credentials=$(get_bootstrap_credentials "${system_name}")
 
     kubectl create secret generic "${secret_name}" \
         --from-literal=join.key="${join_key}" \
         --from-literal=master.key="${master_key}" \
         --from-file=system.yaml="${system_yaml}" \
-        --from-literal=bootstrap.creds="${admin_credentials}" \
+        --from-literal=bootstrap.creds="${bootstrap_credentials}" \
         -o yaml \
         --namespace="${namespace}" \
         --dry-run=client \
