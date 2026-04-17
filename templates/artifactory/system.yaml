@@ -11,3 +11,6 @@ artifactory:
   tomcat:
     connector:
       extraConfig: 'connectionTimeout="600000"'
+observability:
+  consumption:
+    allow: ""
