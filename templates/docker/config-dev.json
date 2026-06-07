@@ -3,6 +3,9 @@
     "artifactory-jcr.infra.svc.cluster.local:8082": {
       "auth": "{{AUTH_PLACEHOLDER}}"
     },
+    "artifactory-jcr.infra:8082": {
+      "auth": "{{AUTH_PLACEHOLDER}}"
+    },
     "dev-jcr.nguiland.org": {
       "auth": "{{AUTH_PLACEHOLDER}}"
     }
