@@ -6,8 +6,6 @@ script_dir=`realpath "$(dirname $0)"`
 project_dir=`realpath "${script_dir}/.."`
 system_yaml_template=`realpath "${script_dir}/../templates/artifactory/system.yaml"`
 
-namespace="infra"
-
 set_connection_string() {
     local env="$1"
     local system_yaml="$2"
@@ -105,7 +103,7 @@ create_secret() {
         --from-literal=user="${user}" \
         --from-literal=password="${password}" \
         -o yaml \
-        --namespace="${namespace}" \
+        --namespace="${env}" \
         --dry-run=client \
         | grep -v "\s*creationTimestamp:\s*null" > "${secret_yaml}"
 

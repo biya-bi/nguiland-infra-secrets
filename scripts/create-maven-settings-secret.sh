@@ -6,8 +6,6 @@ script_dir=`realpath "$(dirname $0)"`
 project_dir=`realpath "${script_dir}/.."`
 settings_xml_template=`realpath "${script_dir}/../templates/maven/settings.xml"`
 
-namespace="infra"
-
 secret_name="maven-settings"
 
 get_credential_xpath() {
@@ -45,7 +43,7 @@ create_secret() {
     kubectl create secret generic "${secret_name}" \
         --from-file=settings.xml="${settings_xml}" \
         -o yaml \
-        --namespace="${namespace}" \
+        --namespace="${env}" \
         --dry-run=client \
         | grep -v "\s*creationTimestamp:\s*null" > "${secret_yaml}"
 

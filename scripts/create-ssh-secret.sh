@@ -2,7 +2,8 @@
 
 set -eu
 
-namespace="infra"
+scripts_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+project_dir="$(cd "${scripts_dir}/.." && pwd)"
 
 create_known_hosts_file() {
     local hosts=("$1")
@@ -17,11 +18,13 @@ create_known_hosts_file() {
 }
 
 create_secret() {
-    local secret_name="$1"
-    local secret_yaml_file="$2"
+    local env="$1"
+    local secret_name="$2"
     local private_key_file="$3"
     local private_key_type="$4"
     local hosts="$5"
+
+    local secret_yaml="${project_dir}/${env}/sops-age/${secret_name}.yaml"
 
     local known_hosts=$(create_known_hosts_file "${hosts}")
 
@@ -31,9 +34,13 @@ create_secret() {
         --from-file=identity="${private_key_file}" \
         --from-file=known_hosts="${known_hosts}" \
         -o yaml \
-        --namespace="${namespace}" \
+        --namespace="${env}" \
         --dry-run=client \
-        | grep -v "\s*creationTimestamp:\s*null" > "${secret_yaml_file}"
+        | grep -v "\s*creationTimestamp:\s*null" > "${secret_yaml}"
+
+    sops -e -i "${secret_yaml}"
+
+    printf "The %s secret was created in the %s file" "${secret_name}" "${secret_yaml}"
 
     # Remove the temp file that was created
     rm "${known_hosts}"

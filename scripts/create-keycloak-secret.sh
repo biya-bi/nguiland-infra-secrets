@@ -5,8 +5,6 @@ set -eu
 script_dir=`realpath "$(dirname $0)"`
 project_dir=`realpath "${script_dir}/.."`
 
-namespace="infra"
-
 secret_name="keycloak"
 
 create_secret() {
@@ -32,7 +30,7 @@ create_secret() {
         --from-literal=console-user="${console_user}" \
         --from-literal=console-password="${console_password}" \
         -o yaml \
-        --namespace="${namespace}" \
+        --namespace="${env}" \
         --dry-run=client \
         | grep -v "\s*creationTimestamp:\s*null" > "${secret_yaml}"
     cd "${project_dir}"

@@ -1,12 +1,12 @@
 {
   "auths": {
-    "artifactory-jcr.infra.svc.cluster.local:8082": {
+    "artifactory-jcr.local.svc.cluster.local:8082": {
       "auth": "{{AUTH_PLACEHOLDER}}"
     },
-    "artifactory-jcr.infra:8082": {
+    "artifactory-jcr.local:8082": {
       "auth": "{{AUTH_PLACEHOLDER}}"
     },
-    "artifactory-jcr.infra": {
+    "artifactory-jcr.local": {
       "auth": "{{AUTH_PLACEHOLDER}}"
     }
   }

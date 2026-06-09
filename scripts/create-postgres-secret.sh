@@ -5,8 +5,6 @@ set -eu
 script_dir=`realpath "$(dirname $0)"`
 project_dir=`realpath "${script_dir}/.."`
 
-namespace="infra"
-
 secret_name="postgres"
 
 create_secret() {
@@ -27,7 +25,7 @@ create_secret() {
         --from-literal=db="${database}" \
         --from-literal=extra-dbs="${extra_databases}" \
         -o yaml \
-        --namespace="${namespace}" \
+        --namespace="${env}" \
         --dry-run=client \
         | grep -v "\s*creationTimestamp:\s*null" > "${secret_yaml}"
     

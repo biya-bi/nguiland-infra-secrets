@@ -6,8 +6,6 @@ script_dir=`realpath "$(dirname $0)"`
 project_dir=`realpath "${script_dir}/.."`
 template_dir=`realpath "${script_dir}/../templates/docker"`
 
-namespace="infra"
-
 secret_name="docker-config"
 
 get_credentials() {
@@ -43,7 +41,7 @@ create_secret() {
         --from-file=config.json="${config_json}" \
         --from-file=.dockerconfigjson="${config_json}" \
         -o yaml \
-        --namespace="${namespace}" \
+        --namespace="${env}" \
         --dry-run=client \
         | grep -v "\s*creationTimestamp:\s*null" > "${secret_yaml}"
 
